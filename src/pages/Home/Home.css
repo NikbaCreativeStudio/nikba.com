@@ -1,0 +1,108 @@
+/* 
+* Home 
+*/
+.home {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out, opacity 0.325s ease-in-out;
+	background-image: -moz-radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
+	background-image: -webkit-radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
+	background-image: -ms-radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
+	background-image: radial-gradient(rgba(0, 0, 0, 0.25) 25%, transparent 55%);
+	max-width: 100%;
+	text-align: center;
+}
+
+.home>* {
+	transition: opacity 0.325s ease-in-out;
+	position: relative;
+	margin-top: 3.5rem;
+}
+
+.home>*:before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: calc(-3.5rem - 1px);
+	left: calc(50% - 1px);
+	width: 1px;
+	height: calc(3.5rem + 1px);
+	background: #ffffff;
+}
+
+.home>:first-child {
+	margin-top: 0;
+}
+
+.home>:first-child:before {
+	display: none;
+}
+
+.home .container {
+    border-style: solid;
+	border-color: #ffffff;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	max-width: 100%;
+}
+
+.home .container .row {
+	transition: max-height 0.75s ease, padding 0.75s ease, opacity 0.325s ease-in-out;
+	transition-delay: 0.25s;
+	padding: 3rem 2rem;
+	max-height: 40rem;
+	overflow: hidden;
+}
+
+.home .container .row>:last-child {
+	margin-bottom: 0;
+}
+
+.home .container h1 {
+    font-size: 2.25rem;
+    line-height: 1.3;
+    letter-spacing: .5rem;
+	font-weight: 600;
+	margin: 0 0 1rem;
+}
+
+.home .container p {
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+	font-size: 0.8rem;
+	line-height: 2;
+	margin: 0 0 2rem;
+}
+
+@media screen and (max-width:980px) {
+	.home .container p br {
+		display: none;
+	}
+}
+
+@media screen and (max-width:736px) {
+	.home>* {
+		margin-top: 2rem;
+	}
+	.home>*:before {
+		top: calc(-2rem - 1px);
+		height: calc(2rem + 1px);
+	}
+
+	.home .container .row {
+		padding: 2.5rem 1rem;
+	}
+	.home .container p {
+		line-height: 1.875;
+	}
+}
+
+@media screen and (max-width:480px) {
+	.home {
+		padding: 1.5rem 0;
+	}
+	.home .container .row {
+		padding: 2.5rem 0;
+	}
+}

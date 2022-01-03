@@ -1,0 +1,61 @@
+.contacts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.contact_footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.quote {
+    color: #fff;
+    font-size: 1rem;
+    display: block;
+    text-decoration: none;
+    border: 1px solid #fff;
+    border-radius: 0.25rem;
+    padding: 0.3rem 1rem;
+}
+    .quote:hover {
+        background-color: rgba(255,255,255,.075);
+    }
+
+.social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 1rem 0;
+}
+    .social div a {
+        border-radius: 100%;
+        border: 1px solid #fff;
+        display: block;
+        height: 2.25rem;
+        width: 2.25rem;
+        line-height: 2.25rem;
+        text-align: center;
+        margin-right: 1rem;
+    }
+        .social div a:hover {
+            background-color: rgba(255,255,255,.075);
+        }
+
+        .social div a span {
+            display: none;
+        }
+
+@media screen and (max-width:480px) {
+    .social {
+        justify-content: space-between;
+    }
+}
