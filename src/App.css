@@ -35,6 +35,11 @@ body {
   background: #1b1f22;
 }
 
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 /*
  * Wrapper
  */
@@ -155,6 +160,17 @@ body {
   color: #fff;
   font-weight: 600;
 }
+
+.main article .page_text {
+  text-align: justify;
+}
+  .main article .page_text p {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #fff;
+    font-weight: 300;
+  }
 
 @media screen and (max-width:736px) {
 	.main article {

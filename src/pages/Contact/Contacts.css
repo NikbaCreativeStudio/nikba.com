@@ -6,6 +6,16 @@
     width: 100%;
     margin-bottom: 1rem;
 }
+    .contacts div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+        .contacts div svg {
+            height: 30px;
+            margin-right: 0.25rem;
+        }
 
 .contact_footer {
     display: flex;
@@ -39,15 +49,23 @@
     .social div a {
         border-radius: 100%;
         border: 1px solid #fff;
-        display: block;
         height: 2.25rem;
         width: 2.25rem;
         line-height: 2.25rem;
         text-align: center;
         margin-right: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
         .social div a:hover {
             background-color: rgba(255,255,255,.075);
+        }
+
+        .social div a svg {
+            height: 1.5rem;
+            width: 1.5rem;
         }
 
         .social div a span {
@@ -55,6 +73,19 @@
         }
 
 @media screen and (max-width:480px) {
+    .contacts {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+        .contacts div {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+            .contacts div svg {
+                margin-right: 0.7rem;
+            }
+
+
     .social {
         justify-content: space-between;
     }
