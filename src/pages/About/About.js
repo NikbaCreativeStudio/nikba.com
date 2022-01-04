@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; 
 import './About.css';
 
 import {Close} from "../../components/Close/Close";

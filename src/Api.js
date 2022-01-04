@@ -43,3 +43,8 @@ export const getFiles = async (fileId) => {
     const data = await getData('/files/' + fileId)
     return data.data.full_url
 }
+
+export const getServices = async () => {
+    const data = await getData('/items/services')
+    return data
+}
