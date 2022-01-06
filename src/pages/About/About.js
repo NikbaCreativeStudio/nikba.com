@@ -1,86 +1,45 @@
-import React from "react"; 
+import React, { Fragment, useContext, useEffect } from "react";
 import './About.css';
+
+import { ApiContext } from "../../context/api/apiContext";
 
 import {Close} from "../../components/Close/Close";
 import {Loading} from "../../components/Loader/Loader";
+import { Clients } from "../../components/Clients/Clients";
 
-import {getPage, getClients} from "../../Api";
+export const About = () => {
 
-import Image from "../../components/Image/Image";
+    const {isLoading, clients, getClients, page, getPage} = useContext(ApiContext);
 
-export class About extends React.Component {
+    useEffect(() => {
+        getClients();
+        getPage(1);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-    // State
-    state = {
-        page: [],
-        clients: [],
-        loading: true
-    }    
+    
 
-    // Methods
-    componentDidMount() {
-        this.loadPage();
-        this.loadClients();
-    }
+    return (
+        <Fragment>
+        <div className="main">
+            <article>
+                <Close Path="/" />
 
-    // Load Page
-    loadPage =()=>(
-        getPage('1').then(response => {
-            this.setState({
-                page: response,
-                loading: false
-            });
-        }).catch(error => {
-            console.log(error);
-            this.setState({ loading: false });
-        })
-    )
+                {isLoading ? (
+                    <Loading />
+                ) : (
 
-    // Load Clients
-    loadClients =()=>(
-        getClients().then(response => {
-            this.setState({
-                clients: response,
-                loading: false
-            });
-        }).catch(error => {
-            console.log(error);
-            this.setState({ loading: false });
-        })
-    )
+                    <>
+                    <h2 className="page_title">{page.title}</h2>
+                    <div dangerouslySetInnerHTML={{__html: page.text}} className="page_text" />
+                    
 
-    render() {
+                    <Clients clients={clients} />
+                    </>
+                )}
+            </article>
+        </div>
+        </Fragment>
+    );
 
-        const {page} = this.state;
-        const {clients} = this.state;
-        const {loading} = this.state;
-        
-
-        return (
-            <div className="main">
-                <article>
-                    <Close Path="/" />
-                    {loading ? (
-                        <Loading />
-                    ) : (
-                        <>
-                        <h2 className="page_title">{ page.title }</h2>
-                        <div dangerouslySetInnerHTML={ {__html: page.text} } className="page_text" />
-
-                        <div className="clients">
-                            <h3 className="clients_title">Our Clients</h3>
-                            <div className="clients_list">
-                                {clients.map((client, index) => (
-                                    <div className="client" key={index}>
-                                        <Image fileId={client.image} fileTitle={client.title} />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        </>
-                    )}
-                </article>
-            </div>
-        );
-    }
-};
+}

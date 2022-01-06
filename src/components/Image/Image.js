@@ -1,7 +1,7 @@
 import React from 'react';
 import LazyLoad from "react-lazyload";
 
-import { getFiles } from "../../Api";
+import { getFiles } from "../../context/api/Api";
 
 export default class Image extends React.Component {
 
@@ -15,6 +15,7 @@ export default class Image extends React.Component {
     componentDidMount() {
         this.loadFile();
     }
+    
 
     loadFile = () => (
         getFiles(this.props.fileId).then(response => {

@@ -1,59 +1,39 @@
-import React from "react";
-import {Close} from "../../components/Close/Close";
-import {Loading} from "../../components/Loader/Loader";
-import {getService} from "../../Api";
+import React, { Fragment, useContext, useEffect } from "react";
 
-export class Service extends React.Component {
+import { ApiContext } from "../../context/api/apiContext";
+import { useLocation } from 'react-router-dom';
+import { Close } from "../../components/Close/Close";
+import { Loading } from "../../components/Loader/Loader";
 
-    // State
-    state = {
-        service: null,
-        loading: true
-    }    
+export const Service = () => {
 
-    // Methods
-    componentDidMount() {
-        let {id} = this.props;
-        this.loadService(id);
-    }
+    const { isLoading, service, getService } = useContext(ApiContext);
+    const location = useLocation()
+    const { id } = location.state
 
-    // Load Service
-    loadService =(item)=>{
-        getService(item).then(response => {
-            this.setState({
-                service: response,
-                loading: false
-            });
-        }).catch(error => {
-            console.log(error);
-        });
-    }
-
-
-        
-    
+    useEffect(() => {
+        getService(id);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
 
 
-
-    render() {
-        const {loading} = this.state;
-        const {service} = this.state;
-
-        return (
+    return (
+        <Fragment>
             <div className="main">
                 <article>
                     <Close Path="/services" />
-                    {loading ? (
+                    {isLoading ? (
                         <Loading />
                     ) : (
                         <>
-                        <h2 className="page_title">{service.title}</h2>
-                        <div dangerouslySetInnerHTML={ {__html: service.text} } className="page_text" />
+                            <h2 className="page_title">{service.title}</h2>
+                            <div dangerouslySetInnerHTML={{ __html: service.text }} className="page_text" />
                         </>
                     )}
                 </article>
             </div>
-        );
-    }
-};
+        </Fragment>
+    );
+
+}

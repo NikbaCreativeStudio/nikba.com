@@ -53,3 +53,18 @@ export const getService = async (id) => {
     const data = await getData('/items/services/' + id)
     return data
 }
+
+export const getWorks = async () => {
+    const data = await getData('/items/works')
+    return data
+}
+
+export const getWork = async (id) => {
+    const data = await getData('/items/works/' + id)
+    return data
+}
+
+export const getWorkLayers = async (id) => {
+    const data = await getData('/items/works_files?filter[works_id]=' + id)
+    return data
+}

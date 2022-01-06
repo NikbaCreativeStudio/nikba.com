@@ -2,12 +2,16 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css';
 
+// import Api State
+import {ApiState} from './context/api/ApiState';
+
 // import Pages
 import {Home} from './pages/Home/Home';
 import {About} from './pages/About/About';
 import {Services} from './pages/Services/Services';
-import {Serv} from './pages/Service/Serv';
-import {Portfolio} from './pages/Portfolio/Portfolio';
+import {Service} from './pages/Service/Service';
+import {Works} from './pages/Works/Works';
+import {Work} from './pages/Work/Work';
 import {Contact} from './pages/Contact/Contact';
 
 
@@ -21,16 +25,19 @@ function App() {
   return (
     <>
     <div className="wrapper">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/about" element={<About />}/>
-          <Route path="/services" element={<Services />}/>
-          <Route path="/services/:url" element={<Serv />}/>
-          <Route path="/portfolio" element={<Portfolio />}/>
-          <Route path="/contact" element={<Contact />}/>
-        </Routes>
-      </Router>
+      <ApiState>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/about" element={<About />}/>
+            <Route path="/services" element={<Services />}/>
+            <Route path="/services/:url" element={<Service />}/>
+            <Route path="/works" element={<Works />}/>
+            <Route path="/works/:url" element={<Work />}/>
+            <Route path="/contact" element={<Contact />}/>
+          </Routes>
+        </Router>
+      </ApiState>
 
       <Footer />
     </div>

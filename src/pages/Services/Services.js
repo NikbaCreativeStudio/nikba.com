@@ -1,80 +1,56 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment, useContext, useEffect } from "react";
 import './Services.css';
 
-import {Close} from "../../components/Close/Close";
-import {Loading} from "../../components/Loader/Loader";
+import { ApiContext } from "../../context/api/apiContext";
 
-
-import {getServices} from "../../Api";
-
+import {Link} from 'react-router-dom';
+import { Close } from "../../components/Close/Close";
+import { Loading } from "../../components/Loader/Loader";
 import Image from "../../components/Image/Image";
 
-export class Services extends React.Component {
+export const Services = () => {
 
-    // State
-    state = {
-        services: [],
-        loading: true
-    }    
+    const { isLoading, services, getServices, } = useContext(ApiContext);
 
-    // Methods
-    componentDidMount() {
-        this.loadServices();
-    }
+    useEffect(() => {
+        getServices();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-    // Load Services
-    loadServices =()=>(
-        getServices().then(response => {
-            this.setState({
-                services: response,
-                loading: false
-            });
-        }).catch(error => {
-            console.log(error);
-            this.setState({ loading: false });
-        })
-    )
 
-   
 
-    render() {
-
-        
-        const {services} = this.state;
-        const {loading} = this.state;
-        
-
-        return (
+    return (
+        <Fragment>
             <div className="main">
                 <article>
                     <Close Path="/" />
-                    {loading ? (
+                    {isLoading ? (
                         <Loading />
                     ) : (
                         <>
-                        <h2 className="page_title">Our Services</h2>
-                        <div className="services">
-                            {services.map((service, index) => (
-                                
-                                <Link 
-                                    className="service"
-                                    key={index} 
-                                    to={`/services/${service.url}`}
-                                    state={{ id: service.id}}
-                                >
-                                    <div className="service_inner">
-                                        <Image fileId={service.image} fileTitle={service.title} />
-                                        <h3>{service.title}</h3>
-                                        <p>{service.short}</p>
-                                    </div>
-                                </Link>
-                            ))}
-                        </div>
+                            <h2 className="page_title">Our Services</h2>
+                            <div className="services">
+                                {services.map((service, index) => (
+
+                                    <Link
+                                        className="service"
+                                        key={index}
+                                        to={`/services/${service.url}`}
+                                        state={{ id: service.id }}
+                                    >
+                                        <div className="service_inner">
+                                            <Image fileId={service.image} fileTitle={service.title} />
+                                            <h3>{service.title}</h3>
+                                            <p>{service.short}</p>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
                         </>
                     )}
                 </article>
             </div>
-        );
-    }
-};
+        </Fragment>
+    );
+
+}

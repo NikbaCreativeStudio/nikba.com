@@ -1,0 +1,28 @@
+.works {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+    .work {
+        width: 33%;
+        text-align: center;
+    }
+        .work_inner {
+            padding: 1rem;
+        }
+
+        .work_inner img {
+            width: 100%;
+        }
+
+        .work_inner h3 {
+            text-align: center;
+            color: #fff;
+            line-height: 1.5;
+            font-size: 1rem;
+            margin: 0 0 1rem;
+        }

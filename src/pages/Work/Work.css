@@ -1,0 +1,9 @@
+.work_image {
+    margin: 0;
+    padding: 0;
+}
+    .work_image img {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
