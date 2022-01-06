@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './Services.css';
 
 import {Close} from "../../components/Close/Close";
 import {Loading} from "../../components/Loader/Loader";
+
 
 import {getServices} from "../../Api";
 
@@ -34,6 +36,8 @@ export class Services extends React.Component {
         })
     )
 
+   
+
     render() {
 
         
@@ -44,7 +48,7 @@ export class Services extends React.Component {
         return (
             <div className="main">
                 <article>
-                    <Close />
+                    <Close Path="/" />
                     {loading ? (
                         <Loading />
                     ) : (
@@ -52,13 +56,19 @@ export class Services extends React.Component {
                         <h2 className="page_title">Our Services</h2>
                         <div className="services">
                             {services.map((service, index) => (
-                                <div className="service" key={index}>
+                                
+                                <Link 
+                                    className="service"
+                                    key={index} 
+                                    to={`/services/${service.url}`}
+                                    state={{ id: service.id}}
+                                >
                                     <div className="service_inner">
                                         <Image fileId={service.image} fileTitle={service.title} />
                                         <h3>{service.title}</h3>
                                         <p>{service.short}</p>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                         </>

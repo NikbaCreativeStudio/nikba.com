@@ -6,14 +6,18 @@ import './App.css';
 import {Home} from './pages/Home/Home';
 import {About} from './pages/About/About';
 import {Services} from './pages/Services/Services';
+import {Serv} from './pages/Service/Serv';
 import {Portfolio} from './pages/Portfolio/Portfolio';
 import {Contact} from './pages/Contact/Contact';
+
 
 // import Components
 import {Background} from './components/Background/Background';
 import { Footer } from "./components/Footer/Footer";
 
+
 function App() {
+
   return (
     <>
     <div className="wrapper">
@@ -22,6 +26,7 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/about" element={<About />}/>
           <Route path="/services" element={<Services />}/>
+          <Route path="/services/:url" element={<Serv />}/>
           <Route path="/portfolio" element={<Portfolio />}/>
           <Route path="/contact" element={<Contact />}/>
         </Routes>

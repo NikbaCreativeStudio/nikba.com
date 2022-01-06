@@ -48,3 +48,8 @@ export const getServices = async () => {
     const data = await getData('/items/services')
     return data
 }
+
+export const getService = async (id) => {
+    const data = await getData('/items/services/' + id)
+    return data
+}

@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 export const Contact = () => (
     <div className="main">
         <article>
-            <Close />
+            <Close Path="/" />
             <h2 className="page_title">Contacts</h2>
             <div className="contacts">			
                 <div><PhoneIcon /> +373 69 820 825</div>

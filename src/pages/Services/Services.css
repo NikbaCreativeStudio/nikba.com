@@ -11,11 +11,22 @@
         text-align: center;
         border-right: 1px solid #2b3135;
         border-bottom: 1px solid #2b3135;
+        transition: background-color 0.3s ease-in-out;
     }
     
     .service:nth-child(even) {
         border-right: none;
     }
+
+    .service:last-child, .service:nth-last-child(2) {
+        border-bottom: none;
+    }
+
+    .service:hover {
+        transition: background-color 0.3s ease-in-out;
+        background-color: rgba(255, 255, 255, 0.075);
+    }
+
         .service_inner {
             padding: 3rem;
         }
@@ -45,6 +56,10 @@
     }
     
         .service:nth-child(even) {
+            border: 1px solid #2b3135;
+        }
+
+        .service:last-child, .service:nth-last-child(2) {
             border: 1px solid #2b3135;
         }
 
