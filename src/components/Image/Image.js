@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import LazyLoad from "react-lazyload";
+import { Loading } from "../../components/Loader/Loader";
 
-import {getFile} from "../../context/api/ApiFiles";
+import { getFile } from "../../context/api/ApiFiles";
 
-export const Image = ({ fileId, fileTitle }) => {
+export const Image = ({ fileId, fileTitle, fileHeight }) => {
 
-    const [file, setFile] = React.useState(null);
+    const [file, setFile] = useState(null)
+    const [isLoading, setIsLoadeding] = useState(true)
 
-    React.useEffect(() => {
+    useEffect(() => {
         let mounted = true;
 
         getFile(fileId).then(file => {
-            if(mounted){
-            setFile(file);
+            if (mounted) {
+                setFile(file);
+                setIsLoadeding(false);
             }
         });
 
@@ -23,9 +26,13 @@ export const Image = ({ fileId, fileTitle }) => {
 
     return (
         <>
-            <LazyLoad height={100} once>
-                <img src={file} alt={fileTitle} />
-            </LazyLoad>
+            {isLoading ? (
+                <Loading />
+            ) : (
+                <LazyLoad height={100} once>
+                    <img src={file} alt={fileTitle} />
+                </LazyLoad>
+            )}
         </>
     );
 };

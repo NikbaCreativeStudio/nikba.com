@@ -9,16 +9,15 @@ import {Image} from "../../components/Image/Image";
 
 export const Work = () => {
 
-    const { isLoading, work, getWork } = useContext(ApiContext);
+    const { isLoading, work, getWork, workLayers, getWorkLayers  } = useContext(ApiContext);
     const location = useLocation()
     const { id } = location.state
 
     useEffect(() => {
         getWork(id);
+        getWorkLayers(id);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-
 
     return (
         <Fragment>
@@ -37,16 +36,35 @@ export const Work = () => {
                                 <Image fileId={work.header} fileTitle={work.title} />
                             </div>
                         ): null}
-                        {/*
-                        {layers.length > 0 ? (
-                            layers.map((layer, index) => (
+                        
+                        {workLayers.length > 0 ? (
+                            workLayers.map((layer, index) => (
                                 <div className="work_image" key={index} >
                                     <Image fileId={layer.works_files_id} fileTitle={work.title} key={index} />
                                 </div>
                             ))
                         ): null}
-                        */}
+
+                        {work.footer ? (
+                            <div className="work_image">
+                                <Image fileId={work.footer} fileTitle={work.title} />
+                            </div>
+                        ): null}
                         
+                        <div className="work_links">
+                            {work.website? (
+                                <a href={work.website} target="_blank" rel="noopener noreferrer">
+                                    View website
+                                </a>
+                            ): null}
+
+                            {work.behance? (
+                                <a href={work.behance} target="_blank" rel="noopener noreferrer">
+                                    View on Behance
+                                </a>
+                            ): null}
+                        </div>
+
                         </>
                     )}
                 </article>

@@ -150,7 +150,7 @@ a {
 }
 
 .main article .page_title {
-  width: max-content;
+  width: 100%;
   padding-bottom: .5rem;
   margin: 0 0 2rem;
   font-size: 1.5rem;

@@ -40,7 +40,7 @@ export const getClients = async () => {
 }
 
 export const getFiles = async (fileId) => {
-    const data = await getData('/files/' + fileId)
+    const data = await getData('/files/' + fileId + '?fields=data')
     return data.data.full_url
 }
 

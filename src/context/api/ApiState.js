@@ -11,6 +11,7 @@ import {
         GET_SERVICE,
         GET_WORKS,
         GET_WORK,
+        GET_WORK_LAYERS
         } 
         from "../types";
 
@@ -30,6 +31,7 @@ export const ApiState = ({children}) => {
         service: {},
         works: [],
         work: {},
+        workLayers: [],
     }
 
     const [state, dispatch] = useReducer(apiReducer, initialState);
@@ -55,78 +57,117 @@ export const ApiState = ({children}) => {
 
     // Get Clients
     const getClients = async () => {
+        
         showLoading();
-        const res = await getData('/items/clients')
-        const payload = Object.keys(res).map(key => {
-            return {
-                id: key,
-                ...res[key]
-            }
-        });
-        dispatch({ type: GET_CLIENTS, payload });
+        
+        await getData('/items/clients').then(res => {
+            const payload = Object.keys(res).map(key => {
+                return {
+                    id: key,
+                    ...res[key]
+                }
+            });
+            dispatch({ type: GET_CLIENTS, payload })
+        }).catch(error => {
+            console.log(error)
+        })
     }
 
     // Get Services
     const getServices = async () => {
+        
         showLoading();
-        const res = await getData('/items/services')
-        const payload = Object.keys(res).map(key => {
-            return {
-                id: key,
-                ...res[key]
-            }
-        });
-        dispatch({ type: GET_SERVICES, payload });
+        
+        await getData('/items/services').then(res => {
+            const payload = Object.keys(res).map(key => {
+                return {
+                    id: key,
+                    ...res[key]
+                }
+            })
+            dispatch({ type: GET_SERVICES, payload })
+        }).catch(error => {
+            console.log(error)
+        })
     }
 
     // Get Service
     const getService = async (id) => {
         showLoading();
-        const res = await getData(`/items/services/${id}`)
-        const payload = {
-            id: id,
-            ...res
-        }
-        dispatch({ type: GET_SERVICE, payload });
+        await getData(`/items/services/${id}`).then(res => {
+            const payload = {
+                id: id,
+                ...res
+            }
+            dispatch({ type: GET_SERVICE, payload })
+        }).catch(error => {
+            console.log(error)
+        })
     }
 
     // Get Works
     const getWorks = async () => {
         showLoading();
-        const res = await getData('/items/works')
-        const payload = Object.keys(res).map(key => {
-            return {
-                id: key,
-                ...res[key]
-            }
-        });
-        dispatch({ type: GET_WORKS, payload });
+        await getData('/items/works').then(res => {
+            const payload = Object.keys(res).map(key => {
+                return {
+                    id: key,
+                    ...res[key]
+                }
+            })
+            dispatch({ type: GET_WORKS, payload })
+        }).catch(error => {
+            console.log(error)
+        })
     }
 
     // Get Work
     const getWork = async (id) => {
         showLoading();
-        const res = await getData(`/items/works/${id}`)
-        const payload = {
-            id: id,
-            ...res
-        }
-        dispatch({ type: GET_WORK, payload });
+        await getData(`/items/works/${id}`).then(res => {
+            const payload = {
+                id: id,
+                ...res
+            }
+            dispatch({ type: GET_WORK, payload })
+        }).catch(error => {
+            console.log(error)
+        })
     }
+        
+        // Get Work Layers
+        const getWorkLayers = async (id) => {
+            showLoading();
+            await getData(`/items/works_files?filter[works_id]=${id}`).then(res => {
+                const payload = Object.keys(res).map(key => {
+                    return {
+                        id: key,
+                        ...res[key]
+                    }
+                })
+                dispatch({ type: GET_WORK_LAYERS, payload })
+            }).catch(error => {
+                console.log(error)
+            })
+        }
 
 
     // Get Page
     const getPage = async (id) => {
+        
         showLoading();
-        const res = await getData(`/items/pages/${id}`)
-        const payload = { ...res };
-        dispatch({ type: GET_PAGE, payload });
-    }
 
+        await getData(`/items/pages/${id}`).then(res => {
+            const payload = { ...res }
+            dispatch({ type: GET_PAGE, payload })
+        }).catch(error => {
+            console.log(error)
+        })
+    }
 
     return (
         <ApiContext.Provider value={{
-            showLoading, getClients, getPage, getServices, getService, getWorks, getWork,
+            showLoading, getClients, getPage, getServices, getService, getWorks, getWork, getWorkLayers,
             isLoading: state.isLoading,
             clients: state.clients,
             page: state.page,
@@ -134,6 +175,7 @@ export const ApiState = ({children}) => {
             service: state.service,
             works: state.works,
             work: state.work,
+            workLayers: state.workLayers
         }}>
             {children}
         </ApiContext.Provider>

@@ -5,11 +5,11 @@ import './Loader.css';
 export const Loading = () => ( 
     <div className="loader">
     <Loader
-        type="Puff"
-        color="#ffffff"
-        height={70}
-        width={70}
-        timeout={3000} //3 secs
+        type="Oval"
+        color="#fff"
+        height={30}
+        width={30}
+        timeout={0} //3 secs
       />
     </div>
 );

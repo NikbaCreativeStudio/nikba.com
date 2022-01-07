@@ -10,7 +10,7 @@ import {Image} from "../../components/Image/Image";
 
 export const Works = () => {
 
-    const { isLoading, works, getWorks, } = useContext(ApiContext);
+    const { isLoading, works, getWorks } = useContext(ApiContext);
     
 
     useEffect(() => {
