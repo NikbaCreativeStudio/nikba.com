@@ -5,7 +5,7 @@ import {
     GET_SERVICES,
     GET_SERVICE,
     GET_WORKS,
-    GET_WORK,
+    GET_WORK
     
 } from "../types";
 

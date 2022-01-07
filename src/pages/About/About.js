@@ -17,8 +17,6 @@ export const About = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    
-
     return (
         <Fragment>
         <div className="main">
