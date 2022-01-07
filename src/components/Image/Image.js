@@ -1,42 +1,31 @@
 import React from 'react';
 import LazyLoad from "react-lazyload";
 
-import { getFiles } from "../../context/api/Api";
+import {getFile} from "../../context/api/ApiFiles";
 
-export default class Image extends React.Component {
+export const Image = ({ fileId, fileTitle }) => {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            image: null,
-        };
-    }
+    const [file, setFile] = React.useState(null);
 
-    componentDidMount() {
-        this.loadFile();
-    }
-    
+    React.useEffect(() => {
+        let mounted = true;
 
-    loadFile = () => (
-        getFiles(this.props.fileId).then(response => {
-            this.setState({
-                image: response
-            });
-        }).catch(error => {
-            console.log(error);
-        })
-    )
+        getFile(fileId).then(file => {
+            if(mounted){
+            setFile(file);
+            }
+        });
+
+        return () => mounted = false;
+
+    }, [fileId]);
 
 
-
-    render() {
-
-        return (
-            <>
-                <LazyLoad height={100} once>
-                    <img src={this.state.image} alt={this.props.fileTitle} />
-                </LazyLoad>
-            </>
-        );
-    }
-}
+    return (
+        <>
+            <LazyLoad height={100} once>
+                <img src={file} alt={fileTitle} />
+            </LazyLoad>
+        </>
+    );
+};

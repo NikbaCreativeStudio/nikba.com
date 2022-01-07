@@ -6,7 +6,7 @@ import { ApiContext } from "../../context/api/apiContext";
 import {Link} from 'react-router-dom';
 import { Close } from "../../components/Close/Close";
 import { Loading } from "../../components/Loader/Loader";
-import Image from "../../components/Image/Image";
+import {Image} from "../../components/Image/Image";
 
 export const Works = () => {
 
