@@ -1,0 +1,4 @@
+#tsparticles {
+    z-index: 2 !important;
+    position: fixed;
+}

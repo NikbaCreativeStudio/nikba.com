@@ -26,18 +26,18 @@ export const Image = ({ fileId, fileTitle, fileHeight }) => {
 
     return (
         <>
-            
+
             {isLoading ? (
                 <>
                 </>
             ) : (
-            
+
                 <LazyLoad once>
                     <img src={file} alt={fileTitle} />
                 </LazyLoad>
-            
+
             )}
-            
+
         </>
     );
 };

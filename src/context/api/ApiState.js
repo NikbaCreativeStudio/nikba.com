@@ -1,19 +1,19 @@
-import React, {useReducer} from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 import { setupCache } from 'axios-cache-adapter'
-import {ApiContext} from './apiContext';
-import {apiReducer} from './apiReducer';
+import { ApiContext } from './apiContext';
+import { apiReducer } from './apiReducer';
 import {
-        SHOW_LOADING,
-        GET_CLIENTS,
-        GET_PAGE,
-        GET_SERVICES,
-        GET_SERVICE,
-        GET_WORKS,
-        GET_WORK,
-        GET_WORK_LAYERS
-        } 
-        from "../types";
+    SHOW_LOADING,
+    GET_CLIENTS,
+    GET_PAGE,
+    GET_SERVICES,
+    GET_SERVICE,
+    GET_WORKS,
+    GET_WORK,
+    GET_WORK_LAYERS
+}
+    from "../types";
 
 const apiUrl = process.env.REACT_APP_API_URL
 const apiToken = 'Bearer '.concat(process.env.REACT_APP_API_TOKEN);
@@ -21,7 +21,7 @@ const apiToken = 'Bearer '.concat(process.env.REACT_APP_API_TOKEN);
 const cache = setupCache({ maxAge: 15 * 60 * 1000 })
 const api = axios.create({ adapter: cache.adapter })
 
-export const ApiState = ({children}) => {
+export const ApiState = ({ children }) => {
 
     const initialState = {
         isLoading: false,
@@ -35,7 +35,7 @@ export const ApiState = ({children}) => {
     }
 
     const [state, dispatch] = useReducer(apiReducer, initialState);
-    const showLoading = () => dispatch({type: SHOW_LOADING});
+    const showLoading = () => dispatch({ type: SHOW_LOADING });
 
 
     // Main Get Data Functions
@@ -51,15 +51,15 @@ export const ApiState = ({children}) => {
         }).catch(error => {
             console.log(error)
         })
-    
-        return response    
+
+        return response
     }
 
     // Get Clients
     const getClients = async () => {
-        
+
         showLoading();
-        
+
         await getData('/items/clients').then(res => {
             const payload = Object.keys(res).map(key => {
                 return {
@@ -75,9 +75,9 @@ export const ApiState = ({children}) => {
 
     // Get Services
     const getServices = async () => {
-        
+
         showLoading();
-        
+
         await getData('/items/services').then(res => {
             const payload = Object.keys(res).map(key => {
                 return {
@@ -134,27 +134,27 @@ export const ApiState = ({children}) => {
             console.log(error)
         })
     }
-        
-        // Get Work Layers
-        const getWorkLayers = async (id) => {
-            showLoading();
-            await getData(`/items/works_files?filter[works_id]=${id}`).then(res => {
-                const payload = Object.keys(res).map(key => {
-                    return {
-                        id: key,
-                        ...res[key]
-                    }
-                })
-                dispatch({ type: GET_WORK_LAYERS, payload })
-            }).catch(error => {
-                console.log(error)
+
+    // Get Work Layers
+    const getWorkLayers = async (id) => {
+        showLoading();
+        await getData(`/items/works_files?filter[works_id]=${id}`).then(res => {
+            const payload = Object.keys(res).map(key => {
+                return {
+                    id: key,
+                    ...res[key]
+                }
             })
-        }
+            dispatch({ type: GET_WORK_LAYERS, payload })
+        }).catch(error => {
+            console.log(error)
+        })
+    }
 
 
     // Get Page
     const getPage = async (id) => {
-        
+
         showLoading();
 
         await getData(`/items/pages/${id}`).then(res => {

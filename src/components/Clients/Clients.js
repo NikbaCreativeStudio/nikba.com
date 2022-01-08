@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image} from "../../components/Image/Image";
+import { Image } from "../../components/Image/Image";
 
 export const Clients = ({ clients }) => (
     <div className="clients">

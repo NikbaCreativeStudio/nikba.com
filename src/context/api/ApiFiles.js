@@ -22,7 +22,7 @@ const getData = async (endpoint) => {
         console.log(error)
     })
 
-    return response    
+    return response
 }
 
 export const getFile = async (id) => {

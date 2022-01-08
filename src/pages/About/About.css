@@ -6,6 +6,7 @@
     text-transform: uppercase;
     letter-spacing: .2rem;
 }
+
 .clients_list {
     display: flex;
     flex-direction: row;
@@ -13,16 +14,18 @@
     justify-content: space-between;
     align-items: center;
 }
-    .client {
-        width: 100px;
-        padding: 2rem 0.5rem;
-        opacity: 0.5;
-        transition: all 0.3s;
-    }
-        .client:hover {
-            opacity: 1;
-        }
-        .client img {
-            width: 100%;
-        }
 
+.client {
+    width: 100px;
+    padding: 2rem 0.5rem;
+    opacity: 0.5;
+    transition: all 0.3s;
+}
+
+.client:hover {
+    opacity: 1;
+}
+
+.client img {
+    width: 100%;
+}

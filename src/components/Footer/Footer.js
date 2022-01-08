@@ -6,4 +6,3 @@ export const Footer = () => (
         <p className="copyright">&copy; Nikba Creative Studio . Since 2008</p>
     </footer>
 );
-			

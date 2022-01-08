@@ -1,4 +1,6 @@
 import { useLocation } from 'react-router-dom';
+import { ParticleComponent } from '../Particles/Particles';
+
 import './Background.css';
 
 export const Background = () => {
@@ -7,12 +9,8 @@ export const Background = () => {
     const { pathname } = location;
 
     return (
-        <div className={`background ${pathname==='/' ? '' : 'active'}`} id="background">
-            <canvas 
-                className="spiders" 
-                id="spiders" 
-                //ref={canvasRef}
-            ></canvas>
+        <div className={`background ${pathname === '/' ? '' : 'active'}`} id="background">
+            {pathname === '/' && <ParticleComponent />}
         </div>
     );
 }

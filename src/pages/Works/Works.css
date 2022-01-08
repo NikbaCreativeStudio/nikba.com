@@ -7,65 +7,68 @@
     align-items: stretch;
 }
 
-    .work {
-        width: 33%;
-        text-align: center;
-        
-    }
-        .work_inner {
-            padding: 1rem;
-        }
+.work {
+    width: 33%;
+    text-align: center;
 
-        .work_image {
-            overflow: hidden;
-        }
+}
 
-        .work_inner img {
-            width: 100%;
-            transition: all 0.3s;
-            overflow: hidden;
-        }
+.work_inner {
+    padding: 1rem;
+}
 
-        .work:hover img {   
-            transform: scale(1.3);
-            filter: blur(3px);
-            opacity: 0.7;
-        }
+.work_image {
+    overflow: hidden;
+}
 
-        .work_inner h3 {
-            text-align: center;
-            color: #fff;
-            line-height: 1.5;
-            font-size: 1rem;
-            margin: 0 0 1rem;
-        }
-    
-    .work_links {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin: 1.5rem 0;
-        
-    }
-        .work_links a {
-            display: block;
-            width: 40%;
-            height: 100%;
-            color: #fff;
-            font-size: 1rem;
-            text-align: center;
-            display: block;
-            text-decoration: none;
-            border: 1px solid #fff;
-            border-radius: 0.25rem;
-            padding: 0.3rem 1rem;
-            transition: all 0.3s;
-        }
-            .work_links a:hover {
-                background-color: rgba(255,255,255,.075);
-            }
-    
+.work_inner img {
+    width: 100%;
+    transition: all 0.3s;
+    overflow: hidden;
+}
+
+.work:hover img {
+    transform: scale(1.3);
+    filter: blur(3px);
+    opacity: 0.7;
+}
+
+.work_inner h3 {
+    text-align: center;
+    color: #fff;
+    line-height: 1.5;
+    font-size: 1rem;
+    margin: 0 0 1rem;
+}
+
+.work_links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 1.5rem 0;
+
+}
+
+.work_links a {
+    display: block;
+    width: 40%;
+    height: 100%;
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    border: 1px solid #fff;
+    border-radius: 0.25rem;
+    padding: 0.3rem 1rem;
+    transition: all 0.3s;
+}
+
+.work_links a:hover {
+    background-color: rgba(255, 255, 255, .075);
+}
+
 
 @media screen and (max-width:480px) {
     .works {
@@ -74,5 +77,5 @@
 
     .work {
         width: 100%;
-    }    
+    }
 }

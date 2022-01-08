@@ -6,16 +6,18 @@
     width: 100%;
     margin-bottom: 1rem;
 }
-    .contacts div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-    }
-        .contacts div svg {
-            height: 30px;
-            margin-right: 0.25rem;
-        }
+
+.contacts div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.contacts div svg {
+    height: 30px;
+    margin-right: 0.25rem;
+}
 
 .contact_footer {
     display: flex;
@@ -36,9 +38,10 @@
     padding: 0.3rem 1rem;
     transition: all 0.3s;
 }
-    .quote:hover {
-        background-color: rgba(255,255,255,.075);
-    }
+
+.quote:hover {
+    background-color: rgba(255, 255, 255, .075);
+}
 
 .social {
     display: flex;
@@ -47,43 +50,47 @@
     justify-content: flex-start;
     margin: 1rem 0;
 }
-    .social div a {
-        border-radius: 100%;
-        border: 1px solid #fff;
-        height: 2.25rem;
-        width: 2.25rem;
-        margin-right: 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s;
-    }
-        .social div a:hover {
-            background-color: rgba(255,255,255,.075);
-        }
 
-        .social div a svg {
-            height: 1.3rem;
-            width: 1.3rem;
-        }
+.social div a {
+    border-radius: 100%;
+    border: 1px solid #fff;
+    height: 2.25rem;
+    width: 2.25rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
 
-        .social div a span {
-            display: none;
-        }
+.social div a:hover {
+    background-color: rgba(255, 255, 255, .075);
+}
+
+.social div a svg {
+    height: 1.3rem;
+    width: 1.3rem;
+}
+
+.social div a span {
+    display: none;
+}
 
 @media screen and (max-width:480px) {
     .contacts {
         flex-direction: column;
         align-items: flex-start;
     }
-        .contacts div {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-            .contacts div svg {
-                margin-right: 0.7rem;
-            }
+
+    .contacts div {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .contacts div svg {
+        margin-right: 0.7rem;
+    }
 
 
     .social {

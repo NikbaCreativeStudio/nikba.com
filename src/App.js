@@ -24,36 +24,36 @@ import { Footer } from "./components/Footer/Footer";
 function App() {
 
   return (
-    
-    
-        <ApiState>
-          <Router>
-          <div className="wrapper">
-            <Routes>
-            
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/services/:url" element={<Service />} />
-              <Route path="/works" element={<Works />} />
-              <Route path="/works/:url" element={<Work />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/contact/quote" element={<Quote />} />
-              
-            </Routes>
-            <Footer />
-            
-            </div>
-            <Background />
-          </Router>
-          
-          
-        </ApiState>
 
-       
-      
-     
-    
+
+    <ApiState>
+      <Router>
+        <div className="wrapper">
+          <Routes>
+
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/:url" element={<Service />} />
+            <Route path="/works" element={<Works />} />
+            <Route path="/works/:url" element={<Work />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/contact/quote" element={<Quote />} />
+
+          </Routes>
+          <Footer />
+
+        </div>
+        <Background />
+      </Router>
+
+
+    </ApiState>
+
+
+
+
+
   );
 }
 

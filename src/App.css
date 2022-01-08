@@ -27,17 +27,17 @@ html {
 
 
 body {
-  color: #ffffff;
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.65;
-  background: #1b1f22;
+	color: #ffffff;
+	font-family: "Source Sans Pro", sans-serif;
+	font-weight: 300;
+	font-size: 1rem;
+	line-height: 1.65;
+	background: #1b1f22;
 }
 
 a {
-  color: #ffffff;
-  text-decoration: none;
+	color: #ffffff;
+	text-decoration: none;
 }
 
 img {
@@ -56,51 +56,52 @@ img {
  * animation clients-fade
  * ----------------------------------------
  */
- @keyframes clients-fade {
+@keyframes clients-fade {
 	0% {
-	  opacity: 0;
+		opacity: 0;
 	}
+
 	100% {
 		opacity: 1;
 	}
-  }
+}
 
 /*
  * Wrapper
  */
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  padding: 4rem 2rem;
-  z-index: 3;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	min-height: 100vh;
+	width: 100%;
+	padding: 4rem 2rem;
+	z-index: 3;
 }
 
 .wrapper:before {
-  content: '';
-  display: block;
+	content: '';
+	display: block;
 }
 
 @media screen and (max-width:1680px) {
-  .wrapper {
-    padding: 3rem 2rem;
-  }
+	.wrapper {
+		padding: 3rem 2rem;
+	}
 }
 
 @media screen and (max-width:736px) {
-  .wrapper {
-    padding: 2rem 1rem;
-  }
+	.wrapper {
+		padding: 2rem 1rem;
+	}
 }
 
 @media screen and (max-width:480px) {
-  .wrapper {
-    padding: 1rem;
-  }
+	.wrapper {
+		padding: 1rem;
+	}
 }
 
 /*
@@ -127,17 +128,17 @@ img {
 	width: 60rem;
 	max-width: 100%;
 	background-color: rgba(27, 31, 34, 0.85);
-	border-radius: 0.25rem;	
+	border-radius: 0.25rem;
 	overflow: hidden;
 
 	animation-name: page-article;
-    animation-duration: 0.4s;
-    animation-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000);
-    animation-delay: 0.4s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-fill-mode: both;
-    animation-play-state: running;
+	animation-duration: 0.4s;
+	animation-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+	animation-delay: 0.4s;
+	animation-iteration-count: 1;
+	animation-direction: normal;
+	animation-fill-mode: both;
+	animation-play-state: running;
 }
 
 .main article .close {
@@ -178,32 +179,34 @@ img {
 }
 
 .main article .page_title {
-  width: 100%;
-  padding-bottom: .5rem;
-  margin: 0 0 2rem;
-  font-size: 1.5rem;
-  line-height: 1.4;
-  letter-spacing: .5rem;
-  text-transform: uppercase;
-  color: #fff;
-  font-weight: 600;
+	width: 100%;
+	padding-bottom: .5rem;
+	margin: 0 0 2rem;
+	font-size: 1.5rem;
+	line-height: 1.4;
+	letter-spacing: .5rem;
+	text-transform: uppercase;
+	color: #fff;
+	font-weight: 600;
 }
 
 .main article .page_text {
-  text-align: justify;
+	text-align: justify;
 }
-  .main article .page_text p {
-    margin: 0 0 1rem;
-    font-size: 1rem;
-    line-height: 1.4;
-    color: #fff;
-    font-weight: 300;
-  }
+
+.main article .page_text p {
+	margin: 0 0 1rem;
+	font-size: 1rem;
+	line-height: 1.4;
+	color: #fff;
+	font-weight: 300;
+}
 
 @media screen and (max-width:736px) {
 	.main article {
 		padding: 3.5rem 2rem 0.5rem 2rem;
 	}
+
 	.main article .close:before {
 		top: 0.875rem;
 		left: 0.875rem;
@@ -225,13 +228,14 @@ img {
  * animation home-text-scale
  * ----------------------------------------
  */
- @keyframes page-article {
+@keyframes page-article {
 	0% {
-	  height: 0px;
-	  opacity: 0;
+		height: 0px;
+		opacity: 0;
 	}
+
 	100% {
 		height: auto;
 		opacity: 1;
 	}
-  }
+}

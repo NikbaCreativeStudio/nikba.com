@@ -1,4 +1,4 @@
-import { 
+import {
     SHOW_LOADING,
     GET_CLIENTS,
     GET_PAGE,
@@ -7,7 +7,7 @@ import {
     GET_WORKS,
     GET_WORK,
     GET_WORK_LAYERS
-    
+
 } from "../types";
 
 const handlers = {
