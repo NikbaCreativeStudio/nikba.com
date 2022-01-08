@@ -24,11 +24,13 @@ import { Footer } from "./components/Footer/Footer";
 function App() {
 
   return (
-    <>
-      <div className="wrapper">
+    
+    
         <ApiState>
           <Router>
+          <div className="wrapper">
             <Routes>
+            
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
@@ -37,15 +39,24 @@ function App() {
               <Route path="/works/:url" element={<Work />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/contact/quote" element={<Quote />} />
+              
             </Routes>
+            <Footer />
+            
+            </div>
+            <Background />
           </Router>
+          
+          
         </ApiState>
 
-        <Footer />
-      </div>
-      <Background />
-    </>
+       
+      
+     
+    
   );
 }
 
 export default App;
+
+//<div className="wrapper"></div>

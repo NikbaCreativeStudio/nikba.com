@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LazyLoad from "react-lazyload";
-import { Loading } from "../../components/Loader/Loader";
+//import { Loading } from "../../components/Loader/Loader";
 
 import { getFile } from "../../context/api/ApiFiles";
 
@@ -26,13 +26,18 @@ export const Image = ({ fileId, fileTitle, fileHeight }) => {
 
     return (
         <>
+            
             {isLoading ? (
-                <Loading />
+                <>
+                </>
             ) : (
-                <LazyLoad height={100} once>
+            
+                <LazyLoad once>
                     <img src={file} alt={fileTitle} />
                 </LazyLoad>
+            
             )}
+            
         </>
     );
 };

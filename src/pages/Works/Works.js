@@ -40,7 +40,9 @@ export const Works = () => {
                                     state={{ id: work.id}}
                                 >
                                     <div className="work_inner">
-                                        <Image fileId={work.cover} fileTitle={work.title} />
+                                        <div className="work_image">
+                                            <Image fileId={work.cover} fileTitle={work.title} />
+                                        </div>
                                         <h3>{work.title}</h3>
                                     </div>
                                 </Link>

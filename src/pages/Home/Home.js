@@ -2,13 +2,14 @@ import React from "react";
 import './Home.css';
 
 // import components
-import {Nav} from '../../components/Nav/Nav';
-import {LogoComponent} from '../../components/Logo/Logo';
+import { Nav } from '../../components/Nav/Nav';
+import { LogoComponent } from '../../components/Logo/Logo';
 
 export const Home = () => (
+
     <div className="home">
         <LogoComponent />
-        
+
         <div className="container">
             <div className="row">
                 <h1>NIKBA CREATIVE STUDIO</h1>
@@ -18,4 +19,5 @@ export const Home = () => (
 
         <Nav />
     </div>
+
 );

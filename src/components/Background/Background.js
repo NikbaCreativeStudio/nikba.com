@@ -1,13 +1,13 @@
-//import { useRef } from "react";
-//import './spiders.js'
+import { useLocation } from 'react-router-dom';
 import './Background.css';
 
 export const Background = () => {
 
-    //const canvasRef = useRef(null);
+    const location = useLocation()
+    const { pathname } = location;
 
     return (
-        <div className="background" id="background">
+        <div className={`background ${pathname==='/' ? '' : 'active'}`} id="background">
             <canvas 
                 className="spiders" 
                 id="spiders" 

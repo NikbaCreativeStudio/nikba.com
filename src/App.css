@@ -40,6 +40,31 @@ a {
   text-decoration: none;
 }
 
+img {
+	animation-name: clients-fade;
+	animation-duration: 0.6s;
+	animation-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+	animation-delay: 0;
+	animation-iteration-count: 1;
+	animation-direction: normal;
+	animation-fill-mode: both;
+	animation-play-state: running;
+}
+
+/**
+ * ----------------------------------------
+ * animation clients-fade
+ * ----------------------------------------
+ */
+ @keyframes clients-fade {
+	0% {
+	  opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+  }
+
 /*
  * Wrapper
  */
@@ -97,19 +122,22 @@ a {
 }
 
 .main article {
-	transform: translateY(0.25rem);
-	transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
 	padding: 4.5rem 2.5rem 1.5rem 2.5rem;
 	position: relative;
 	width: 60rem;
 	max-width: 100%;
 	background-color: rgba(27, 31, 34, 0.85);
-	border-radius: 0.25rem;
-}
+	border-radius: 0.25rem;	
+	overflow: hidden;
 
-.main article.active {
-	transform: translateY(0);
-	opacity: 1;
+	animation-name: page-article;
+    animation-duration: 0.4s;
+    animation-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+    animation-delay: 0.4s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-play-state: running;
 }
 
 .main article .close {
@@ -190,3 +218,20 @@ a {
 		padding: 3rem 1.5rem 0.5rem 1.5rem;
 	}
 }
+
+
+/**
+ * ----------------------------------------
+ * animation home-text-scale
+ * ----------------------------------------
+ */
+ @keyframes page-article {
+	0% {
+	  height: 0px;
+	  opacity: 0;
+	}
+	100% {
+		height: auto;
+		opacity: 1;
+	}
+  }

@@ -47,6 +47,7 @@
         font-size: 1rem;
         padding: .7rem .7rem;
         width: 100%;
+        transition: all 0.3s;
     }
         .form_group button:hover {
             color: #fff;

@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import './About.css';
 
+
 import { ApiContext } from "../../context/api/apiContext";
 
 import {Close} from "../../components/Close/Close";
@@ -16,7 +17,6 @@ export const About = () => {
         getPage(1);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
     
 
     return (
