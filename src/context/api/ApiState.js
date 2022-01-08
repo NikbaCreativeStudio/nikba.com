@@ -11,7 +11,8 @@ import {
     GET_SERVICE,
     GET_WORKS,
     GET_WORK,
-    GET_WORK_LAYERS
+    GET_WORK_LAYERS,
+    ADD_QUOTE
 }
     from "../types";
 
@@ -32,6 +33,7 @@ export const ApiState = ({ children }) => {
         works: [],
         work: {},
         workLayers: [],
+        quotes: []
     }
 
     const [state, dispatch] = useReducer(apiReducer, initialState);
@@ -165,9 +167,45 @@ export const ApiState = ({ children }) => {
         })
     }
 
+    // Add Quote
+    const addQuote = async (data) => {    
+        
+        let date_ob = new Date()
+        let date = ("0" + date_ob.getDate()).slice(-2)
+        let month = ("0" + (date_ob.getMonth() + 1)).slice(-2)
+        let year = date_ob.getFullYear()
+        let hours = date_ob.getHours()
+        let minutes = date_ob.getMinutes()
+        let seconds = date_ob.getSeconds()
+        let cur_date = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds
+
+        const body = {
+            name: data.name,
+            email: data.email,
+            subject: data.subject,
+            message: data.message,
+            date: cur_date
+        }
+
+        try {
+            await axios.post(`${apiUrl}/items/contacts`, body , { 'headers': { 'Authorization': apiToken } })
+            .then(res => {
+
+                const payload = { ...res }
+                dispatch({ type: ADD_QUOTE, payload })
+            }).catch(error => {
+                console.log(error)
+            })
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+
     return (
         <ApiContext.Provider value={{
-            showLoading, getClients, getPage, getServices, getService, getWorks, getWork, getWorkLayers,
+            showLoading, getClients, getPage, getServices, getService, getWorks, getWork, getWorkLayers, addQuote,
             isLoading: state.isLoading,
             clients: state.clients,
             page: state.page,
@@ -175,7 +213,9 @@ export const ApiState = ({ children }) => {
             service: state.service,
             works: state.works,
             work: state.work,
-            workLayers: state.workLayers
+            workLayers: state.workLayers,
+            quotes: state.quotes
+
         }}>
             {children}
         </ApiContext.Provider>

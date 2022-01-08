@@ -6,7 +6,8 @@ import {
     GET_SERVICE,
     GET_WORKS,
     GET_WORK,
-    GET_WORK_LAYERS
+    GET_WORK_LAYERS,
+    ADD_QUOTE
 
 } from "../types";
 
@@ -28,6 +29,9 @@ const handlers = {
     [GET_WORKS]: (state, { payload }) => ({ ...state, works: payload, isLoading: false }),
     [GET_WORK]: (state, { payload }) => ({ ...state, work: payload, isLoading: false }),
     [GET_WORK_LAYERS]: (state, { payload }) => ({ ...state, workLayers: payload, isLoading: false }),
+
+    // Add Quote
+    [ADD_QUOTE]: (state, { payload }) => ({ ...state, quotes: [...state.quotes, payload] }),
 
     DEFAULT: state => state
 };
