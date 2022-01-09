@@ -39,7 +39,7 @@ export const Services = () => {
                                         state={{ id: service.id }}
                                     >
                                         <div className="service_inner">
-                                            <Image fileId={service.image} fileTitle={service.title} />
+                                            <Image fileId={service.image} fileTitle={service.title} fileHeight={80} />
                                             <h3>{service.title}</h3>
                                             <p>{service.short}</p>
                                         </div>

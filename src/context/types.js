@@ -9,5 +9,6 @@ export const GET_SERVICE = "GET_SERVICE";
 export const GET_WORKS = "GET_WORKS";
 export const GET_WORK = "GET_WORK";
 export const GET_WORK_LAYERS = "GET_WORK_LAYERS";
+export const GET_WORK_GALLERY = "GET_WORK_GALLERY";
 
 export const ADD_QUOTE = "ADD_QUOTE";

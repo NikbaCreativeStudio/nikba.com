@@ -12,6 +12,7 @@ import {
     GET_WORKS,
     GET_WORK,
     GET_WORK_LAYERS,
+    GET_WORK_GALLERY,
     ADD_QUOTE
 }
     from "../types";
@@ -33,6 +34,7 @@ export const ApiState = ({ children }) => {
         works: [],
         work: {},
         workLayers: [],
+        workGallery: [],
         quotes: []
     }
 
@@ -153,6 +155,22 @@ export const ApiState = ({ children }) => {
         })
     }
 
+    // Get Work Gallery
+    const getWorkGallery = async (id) => {
+        showLoading();
+        await getData(`/items/works_gallery?filter[works_id]=${id}`).then(res => {
+            const payload = Object.keys(res).map(key => {
+                return {
+                    id: key,
+                    ...res[key]
+                }
+            })
+            dispatch({ type: GET_WORK_GALLERY, payload })
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+
 
     // Get Page
     const getPage = async (id) => {
@@ -205,7 +223,7 @@ export const ApiState = ({ children }) => {
 
     return (
         <ApiContext.Provider value={{
-            showLoading, getClients, getPage, getServices, getService, getWorks, getWork, getWorkLayers, addQuote,
+            showLoading, getClients, getPage, getServices, getService, getWorks, getWork, getWorkLayers, getWorkGallery, addQuote,
             isLoading: state.isLoading,
             clients: state.clients,
             page: state.page,
@@ -214,6 +232,7 @@ export const ApiState = ({ children }) => {
             works: state.works,
             work: state.work,
             workLayers: state.workLayers,
+            workGallery: state.workGallery,
             quotes: state.quotes
 
         }}>

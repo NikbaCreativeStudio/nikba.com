@@ -7,6 +7,7 @@ import {
     GET_WORKS,
     GET_WORK,
     GET_WORK_LAYERS,
+    GET_WORK_GALLERY,
     ADD_QUOTE
 
 } from "../types";
@@ -29,6 +30,7 @@ const handlers = {
     [GET_WORKS]: (state, { payload }) => ({ ...state, works: payload, isLoading: false }),
     [GET_WORK]: (state, { payload }) => ({ ...state, work: payload, isLoading: false }),
     [GET_WORK_LAYERS]: (state, { payload }) => ({ ...state, workLayers: payload, isLoading: false }),
+    [GET_WORK_GALLERY]: (state, { payload }) => ({ ...state, workGallery: payload, isLoading: false }),
 
     // Add Quote
     [ADD_QUOTE]: (state, { payload }) => ({ ...state, quotes: [...state.quotes, payload] }),

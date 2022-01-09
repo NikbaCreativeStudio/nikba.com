@@ -23,16 +23,19 @@ export const Image = ({ fileId, fileTitle, fileHeight }) => {
 
     }, [fileId]);
 
+    const image_height = fileHeight ? fileHeight : 'auto';
 
     return (
         <>
 
             {isLoading ? (
                 <>
+                <div style={{height: image_height}}>
+                </div>
                 </>
             ) : (
 
-                <LazyLoad once>
+                <LazyLoad offset={100} height={image_height} once>
                     <img src={file} alt={fileTitle} />
                 </LazyLoad>
 

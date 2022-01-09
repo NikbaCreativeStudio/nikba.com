@@ -41,7 +41,7 @@ export const Works = () => {
                                     >
                                         <div className="work_inner">
                                             <div className="work_image">
-                                                <Image fileId={work.cover} fileTitle={work.title} />
+                                                <Image fileId={work.cover} fileTitle={work.title} fileHeight={212} />
                                             </div>
                                             <h3>{work.title}</h3>
                                         </div>

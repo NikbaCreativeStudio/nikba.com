@@ -7,7 +7,7 @@ export const Clients = ({ clients }) => (
         <div className="clients_list">
             {clients.map((client) => (
                 <div className="client" key={client.id}>
-                    <Image fileId={client.image} fileTitle={client.title} />
+                    <Image fileId={client.image} fileTitle={client.title} fileHeight={53} />
                 </div>
             ))}
         </div>

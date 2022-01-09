@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ReactGA from 'react-ga';
+
 import './App.css';
 
 // import Api State
@@ -21,7 +23,12 @@ import { Background } from './components/Background/Background';
 import { Footer } from "./components/Footer/Footer";
 
 
+
 function App() {
+
+  //Google Analytics
+  ReactGA.initialize('UA-20526344-4');
+  ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
 

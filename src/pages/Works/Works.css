@@ -78,4 +78,15 @@
     .work {
         width: 100%;
     }
+
+    .work_links {
+        flex-direction: column;
+        margin-top: 1rem;
+        
+    }
+
+    .work_links a {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
 }

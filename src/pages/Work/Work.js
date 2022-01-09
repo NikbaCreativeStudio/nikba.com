@@ -9,13 +9,14 @@ import { Image } from "../../components/Image/Image";
 
 export const Work = () => {
 
-    const { isLoading, work, getWork, workLayers, getWorkLayers } = useContext(ApiContext);
+    const { isLoading, work, getWork, workLayers, getWorkLayers, workGallery, getWorkGallery } = useContext(ApiContext);
     const location = useLocation()
     const { id } = location.state
 
     useEffect(() => {
         getWork(id);
         getWorkLayers(id);
+        getWorkGallery(id);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -33,21 +34,34 @@ export const Work = () => {
 
                             {work.header ? (
                                 <div className="work_image">
-                                    <Image fileId={work.header} fileTitle={work.title} />
+                                    <Image fileId={work.header} fileTitle={work.title} fileHeight={1400} />
                                 </div>
                             ) : null}
 
                             {workLayers.length > 0 ? (
                                 workLayers.map((layer, index) => (
                                     <div className="work_image" key={index} >
-                                        <Image fileId={layer.works_files_id} fileTitle={work.title} key={index} />
+                                        <Image fileId={layer.works_files_id} fileTitle={work.title} fileHeight={1400} key={index} />
                                     </div>
                                 ))
                             ) : null}
 
+                            {workGallery.length > 0 ? (
+                                <div className="work_gallery">  
+                                    {workGallery.map((gallery, index) => (
+                                        <div className="gallery_image" key={index} >
+                                            <Image fileId={gallery.gallery_id} fileTitle={work.title} fileHeight={1400} key={index} />
+                                        </div>
+                                    ))
+                                    }
+                                </div>
+                                ) : null    
+                            }
+                            
+
                             {work.footer ? (
                                 <div className="work_image">
-                                    <Image fileId={work.footer} fileTitle={work.title} />
+                                    <Image fileId={work.footer} fileTitle={work.title} fileHeight={1400} />
                                 </div>
                             ) : null}
 

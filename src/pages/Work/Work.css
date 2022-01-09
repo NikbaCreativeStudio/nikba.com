@@ -9,3 +9,22 @@
     margin: 0;
     padding: 0;
 }
+
+.work_gallery {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1rem 0;
+}
+    .work_gallery .gallery_image {
+        width: 33%;
+        height: auto;
+        color: #fff;
+        padding: 0.1rem 0.2rem;
+    }
+        .work_gallery .gallery_image img {
+            width: 100%;
+            height: auto;
+        }
