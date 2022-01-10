@@ -1,15 +1,29 @@
-import React from 'react';
-import { Image } from "../../components/Image/Image";
+import React from 'react'
+import './Clients.css'
 
-export const Clients = ({ clients }) => (
+import { useStaleSWR } from '../../api' 
+
+import { Loading } from "../../components/Loader/Loader"
+import { Image } from '../../components/Image/Image'
+
+export const Clients = () => {
+
+    
+    // Load Clients from Api
+    const { data, error } = useStaleSWR('/items/clients')
+    if (error) return <div className="api_fail">Failed to load</div>
+    if (!data) return <Loading />
+
+    return (
     <div className="clients">
         <h3 className="clients_title">Our Clients</h3>
         <div className="clients_list">
-            {clients.map((client) => (
-                <div className="client" key={client.id}>
-                    <Image fileId={client.image} fileTitle={client.title} fileHeight={53} />
+            {data.data.map((client, index) => (
+                <div className="client" key={index}>
+                    <Image id={client.image} title={client.title} height={53} />
                 </div>
             ))}
         </div>
     </div>
-);
+    )
+}

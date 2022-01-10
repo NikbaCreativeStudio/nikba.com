@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Particles from "react-tsparticles";
 
 import './Particles.css';
@@ -7,7 +7,7 @@ export const ParticleComponent = () => {
 
     const [show, setShow] = useState(false)
 
-    React.useEffect(() => {
+    useEffect(() => {
         const timeout = setTimeout(() => {
             setShow(true)
         }, 10)

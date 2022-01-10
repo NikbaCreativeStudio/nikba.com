@@ -1,7 +1,7 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment } from "react";
 import './Works.css';
 
-import { ApiContext } from "../../context/api/apiContext";
+import { useStaleSWR } from '../../api' 
 
 import { Link } from 'react-router-dom';
 import { Close } from "../../components/Close/Close";
@@ -10,14 +10,10 @@ import { Image } from "../../components/Image/Image";
 
 export const Works = () => {
 
-    const { isLoading, works, getWorks } = useContext(ApiContext);
-
-
-    useEffect(() => {
-        getWorks();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
+    // Load Works from Api
+    const { data, error } = useStaleSWR('/items/works')
+    if (error) return <div className="api_fail">Failed to load</div>
+    if (!data) return <Loading />
 
 
     return (
@@ -25,31 +21,26 @@ export const Works = () => {
             <div className="main">
                 <article>
                     <Close Path="/" />
-                    {isLoading ? (
-                        <Loading />
-                    ) : (
-                        <>
-                            <h2 className="page_title">Our Best Work</h2>
-                            <div className="works">
-                                {works.map((work, index) => (
+                    
+                    <h2 className="page_title">Our Best Work</h2>
+                    <div className="works">
+                        {data.data.map((work, index) => (
 
-                                    <Link
-                                        className="work"
-                                        key={index}
-                                        to={`/works/${work.url}`}
-                                        state={{ id: work.id }}
-                                    >
-                                        <div className="work_inner">
-                                            <div className="work_image">
-                                                <Image fileId={work.cover} fileTitle={work.title} fileHeight={212} />
-                                            </div>
-                                            <h3>{work.title}</h3>
-                                        </div>
-                                    </Link>
-                                ))}
-                            </div>
-                        </>
-                    )}
+                            <Link
+                                className="work"
+                                key={index}
+                                to={`/works/${work.url}`}
+                            >
+                                <div className="work_inner">
+                                    <div className="work_image">
+                                        <Image id={work.cover} title={work.title} height={212} />
+                                    </div>
+                                    <h3>{work.title}</h3>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                        
                 </article>
             </div>
         </Fragment>

@@ -1,9 +1,7 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import './Quote.css';
 
 import { useForm } from 'react-hook-form';
-import { ApiContext } from '../../context/api/apiContext';
-
 
 import { Close } from "../../components/Close/Close";
 
@@ -18,24 +16,69 @@ export const Quote = () => {
     } = useForm();
 
     const [disabled, setDisabled] = useState(false);
-    
+
     const [show, setShow] = useState(false);
 
-    const api = useContext(ApiContext);
+    // Api url
+    const apiUrl = process.env.REACT_APP_API_URL
+    const apiToken = 'Bearer '.concat(process.env.REACT_APP_API_TOKEN);
+
+    // Date
+    let date_ob = new Date()
+    let date = ("0" + date_ob.getDate()).slice(-2)
+    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2)
+    let year = date_ob.getFullYear()
+    let hours = date_ob.getHours()
+    let minutes = date_ob.getMinutes()
+    let seconds = date_ob.getSeconds()
+    let cur_date = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds
 
     const onSubmit = async (data) => {
-        
-        
-            setDisabled(true);
 
-            api.addQuote(data).then(() => {
-                setShow(true);
-                reset()
-                setDisabled(false)
-            }).catch(() => {
-                setShow(false);
-                setDisabled(false)
-            });
+        setDisabled(true);
+
+        const body = {
+            name: data.name,
+            email: data.email,
+            subject: data.subject,
+            message: data.message,
+            date: cur_date
+        }
+
+        const mail_body = {
+            "to": "office@nikba.com",
+            "subject": "New Message from Nikba Website",
+            "body": "Name: " + data.name + "<br />Email: " + data.email + "<br />Subject: " + data.subject + "<br />Message: " + data.message,
+            "type": "html"
+        }
+
+        try {
+            await fetch(`${apiUrl}/items/contacts`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': apiToken
+                },
+                body: JSON.stringify(body),
+            })
+
+            await fetch(`${apiUrl}/mail`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': apiToken
+                },
+                body: JSON.stringify(mail_body),
+            })
+            
+            setShow(true);
+            reset()
+            setDisabled(false)
+            
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
 
     return (

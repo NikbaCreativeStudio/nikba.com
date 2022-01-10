@@ -1,36 +1,29 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment } from "react";
 
-import { ApiContext } from "../../context/api/apiContext";
-import { useLocation } from 'react-router-dom';
+import { useStaleSWR } from '../../api' 
+
+import { useParams } from 'react-router-dom';
 import { Close } from "../../components/Close/Close";
 import { Loading } from "../../components/Loader/Loader";
 
 export const Service = () => {
 
-    const { isLoading, service, getService } = useContext(ApiContext);
-    const location = useLocation()
-    const { id } = location.state
+    
+    const { url } = useParams()
 
-    useEffect(() => {
-        getService(id);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-
+    // Load Service from Api
+    const { data, error } = useStaleSWR(`/items/services?filter[url]=${url}&single=true`)
+    if (error) return <div className="api_fail">Failed to load</div>
+    if (!data) return <Loading />
 
     return (
         <Fragment>
             <div className="main">
                 <article>
                     <Close Path="/services" />
-                    {isLoading ? (
-                        <Loading />
-                    ) : (
-                        <>
-                            <h2 className="page_title">{service.title}</h2>
-                            <div dangerouslySetInnerHTML={{ __html: service.text }} className="page_text" />
-                        </>
-                    )}
+                    
+                    <h2 className="page_title">{data.data.title}</h2>
+                    <div dangerouslySetInnerHTML={{ __html: data.data.text }} className="page_text" />
                 </article>
             </div>
         </Fragment>

@@ -1,11 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { SWRConfig } from 'swr'
 import ReactGA from 'react-ga';
 
+import "@fontsource/source-sans-pro";
 import './App.css';
-
-// import Api State
-import { ApiState } from './context/api/ApiState';
 
 // import Pages
 import { Home } from './pages/Home/Home';
@@ -22,8 +21,6 @@ import { Quote } from './pages/Quote/Quote';
 import { Background } from './components/Background/Background';
 import { Footer } from "./components/Footer/Footer";
 
-
-
 function App() {
 
   //Google Analytics
@@ -31,9 +28,7 @@ function App() {
   ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
-
-
-    <ApiState>
+    <SWRConfig value={{ provider: () => new Map() }}>
       <Router>
         <div className="wrapper">
           <Routes>
@@ -46,24 +41,14 @@ function App() {
             <Route path="/works/:url" element={<Work />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/contact/quote" element={<Quote />} />
-
           </Routes>
           <Footer />
 
         </div>
         <Background />
       </Router>
-
-
-    </ApiState>
-
-
-
-
-
+    </SWRConfig>
   );
 }
 
 export default App;
-
-//<div className="wrapper"></div>

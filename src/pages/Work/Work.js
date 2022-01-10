@@ -1,86 +1,62 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment } from "react";
 import './Work.css';
 
-import { ApiContext } from "../../context/api/apiContext";
-import { useLocation } from 'react-router-dom';
+import { useStaleSWR } from '../../api' 
+import { useParams } from 'react-router-dom';
 import { Close } from "../../components/Close/Close";
 import { Loading } from "../../components/Loader/Loader";
 import { Image } from "../../components/Image/Image";
+import { Gallery } from "./Gallery";
+import { Layers } from "./Layers";
 
 export const Work = () => {
 
-    const { isLoading, work, getWork, workLayers, getWorkLayers, workGallery, getWorkGallery } = useContext(ApiContext);
-    const location = useLocation()
-    const { id } = location.state
+    const { url } = useParams()
 
-    useEffect(() => {
-        getWork(id);
-        getWorkLayers(id);
-        getWorkGallery(id);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // Load Work from Api
+    const { data, error } = useStaleSWR(`/items/works?filter[url]=${url}&single=true`)
+    if (error) return <div className="api_fail">Failed to load</div>
+    if (!data) return <Loading />
 
     return (
         <Fragment>
             <div className="main">
                 <article>
                     <Close Path="/works" />
-                    {isLoading ? (
-                        <Loading />
-                    ) : (
-                        <>
-                            <h2 className="page_title">{work.title}</h2>
-                            <div dangerouslySetInnerHTML={{ __html: work.text }} className="page_text" />
+                    
+                        <h2 className="page_title">{data.data.title}</h2>
+                        <div dangerouslySetInnerHTML={{ __html: data.data.text }} className="page_text" />
 
-                            {work.header ? (
-                                <div className="work_image">
-                                    <Image fileId={work.header} fileTitle={work.title} fileHeight={1400} />
-                                </div>
-                            ) : null}
-
-                            {workLayers.length > 0 ? (
-                                workLayers.map((layer, index) => (
-                                    <div className="work_image" key={index} >
-                                        <Image fileId={layer.works_files_id} fileTitle={work.title} fileHeight={1400} key={index} />
-                                    </div>
-                                ))
-                            ) : null}
-
-                            {workGallery.length > 0 ? (
-                                <div className="work_gallery">  
-                                    {workGallery.map((gallery, index) => (
-                                        <div className="gallery_image" key={index} >
-                                            <Image fileId={gallery.gallery_id} fileTitle={work.title} fileHeight={1400} key={index} />
-                                        </div>
-                                    ))
-                                    }
-                                </div>
-                                ) : null    
-                            }
-                            
-
-                            {work.footer ? (
-                                <div className="work_image">
-                                    <Image fileId={work.footer} fileTitle={work.title} fileHeight={1400} />
-                                </div>
-                            ) : null}
-
-                            <div className="work_links">
-                                {work.website ? (
-                                    <a href={work.website} target="_blank" rel="noopener noreferrer">
-                                        View website
-                                    </a>
-                                ) : null}
-
-                                {work.behance ? (
-                                    <a href={work.behance} target="_blank" rel="noopener noreferrer">
-                                        View on Behance
-                                    </a>
-                                ) : null}
+                        {data.data.header ? (
+                            <div className="work_image">
+                                <Image id={data.data.header} title={data.data.title} height={1400} />
                             </div>
+                        ) : null}
 
-                        </>
-                    )}
+                        <Layers id={data.data.id} title={data.data.title} />
+
+                        <Gallery id={data.data.id} title={data.data.title} />
+
+                        {data.data.footer ? (
+                            <div className="work_image">
+                                <Image id={data.data.footer} title={data.data.title} height={1400} />
+                            </div>
+                        ) : null}
+
+                        <div className="work_links">
+                            {data.data.website ? (
+                                <a href={data.data.website} target="_blank" rel="noopener noreferrer">
+                                    View website
+                                </a>
+                            ) : null}
+
+                            {data.data.behance ? (
+                                <a href={data.data.behance} target="_blank" rel="noopener noreferrer">
+                                    View on Behance
+                                </a>
+                            ) : null}
+                        </div>
+
                 </article>
             </div>
         </Fragment>
