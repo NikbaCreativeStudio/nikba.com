@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import { useStaleSWR } from '../../api'
 
 import { Loading } from "../../components/Loader/Loader"
-import { Image } from '../../components/Image/Image'
+import { WorkImage } from './WorkImage'
 
 export const Layers = ({ id, title }) => {
 
@@ -17,7 +17,7 @@ export const Layers = ({ id, title }) => {
         {data.data.length > 0 ? (
             data.data.map((gallery, index) => (
                 <div className="work_image" key={index} >
-                    <Image id={gallery.works_files_id} title={title} height={1400} />
+                    <WorkImage id={gallery.works_files_id} title={title} />
                 </div>
             ))
         ) : null}

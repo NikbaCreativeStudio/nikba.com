@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { useStaleSWR } from '../../api' 
 import LazyLoad from "react-lazyload"
 
-export const Image = ({ id, title, height }) => {
+export const Svg = ({ id, title, height }) => {
 
     // Image height
     const image_height = height ? height : 'auto'
@@ -11,6 +11,7 @@ export const Image = ({ id, title, height }) => {
     const { data, error } = useStaleSWR(`/files/${id}`)
     if (error) return <div className="api_fail">Failed to load</div>
     if (!data) return <div style={{height: image_height}}></div>
+
 
     return (
         <Fragment>

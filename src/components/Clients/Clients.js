@@ -4,7 +4,7 @@ import './Clients.css'
 import { useStaleSWR } from '../../api' 
 
 import { Loading } from "../../components/Loader/Loader"
-import { Image } from '../../components/Image/Image'
+import { Svg } from '../../components/Svg/Svg'
 
 export const Clients = () => {
 
@@ -20,7 +20,7 @@ export const Clients = () => {
         <div className="clients_list">
             {data.data.map((client, index) => (
                 <div className="client" key={index}>
-                    <Image id={client.image} title={client.title} height={53} />
+                    <Svg id={client.image} title={client.title} height={53} />
                 </div>
             ))}
         </div>

@@ -6,7 +6,7 @@ import { useStaleSWR } from '../../api'
 import { Link } from 'react-router-dom';
 import { Close } from "../../components/Close/Close";
 import { Loading } from "../../components/Loader/Loader";
-import { Image } from "../../components/Image/Image";
+import { Svg } from "../../components/Svg/Svg";
 
 export const Services = () => {
 
@@ -29,7 +29,7 @@ export const Services = () => {
                                 to={`/services/${service.url}`}
                             >
                                 <div className="service_inner">
-                                    <Image id={service.image} title={service.title} height={80} />
+                                    <Svg id={service.image} title={service.title} height={80} />
                                     <h3>{service.title}</h3>
                                     <p>{service.short}</p>
                                 </div>

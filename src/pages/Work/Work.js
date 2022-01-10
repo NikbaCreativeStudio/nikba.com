@@ -5,7 +5,7 @@ import { useStaleSWR } from '../../api'
 import { useParams } from 'react-router-dom';
 import { Close } from "../../components/Close/Close";
 import { Loading } from "../../components/Loader/Loader";
-import { Image } from "../../components/Image/Image";
+import { WorkImage } from "./WorkImage";
 import { Gallery } from "./Gallery";
 import { Layers } from "./Layers";
 
@@ -29,7 +29,7 @@ export const Work = () => {
 
                         {data.data.header ? (
                             <div className="work_image">
-                                <Image id={data.data.header} title={data.data.title} height={1400} />
+                                <WorkImage id={data.data.header} title={data.data.title} />
                             </div>
                         ) : null}
 
@@ -39,7 +39,7 @@ export const Work = () => {
 
                         {data.data.footer ? (
                             <div className="work_image">
-                                <Image id={data.data.footer} title={data.data.title} height={1400} />
+                                <WorkImage id={data.data.footer} title={data.data.title} />
                             </div>
                         ) : null}
 

@@ -3,7 +3,7 @@ import React, {Fragment} from 'react'
 import { useStaleSWR } from '../../api' 
 
 import { Loading } from "../../components/Loader/Loader"
-import { Image } from '../../components/Image/Image'
+import { GalleryImage } from './GalleryImage'
 
 export const Gallery = ({id, title}) => {
 
@@ -18,7 +18,7 @@ export const Gallery = ({id, title}) => {
             <div className="work_gallery"> 
                 {data.data.map((gallery, index) => (
                     <div className="gallery_image" key={index} >
-                        <Image id={gallery.gallery_id} title={title} height={1400} />
+                        <GalleryImage id={gallery.gallery_id} title={title} />
                     </div>
                 ))}
             </div>
