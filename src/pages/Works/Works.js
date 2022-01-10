@@ -21,7 +21,7 @@ export const Works = () => {
     }
 
     // Load Works from Api
-    const { data, error } = useStaleSWR(`/items/works?limit=${cnt}`)
+    const { data, error } = useStaleSWR(`/items/works?sort=-id&limit=${cnt}`)
     if (error) return <div className="api_fail">Failed to load</div>
     if (!data) return <Loading />
 
@@ -57,7 +57,7 @@ export const Works = () => {
 
                     </div>
                     {cnt < limit && (
-                        <button className="load_more" onClick={() => setCnt(cnt + 3)}>Load More</button>
+                        <button className="load_more" onClick={() => setCnt(cnt + 6)}>Load More</button>
                     )}
                         
                 </article>
