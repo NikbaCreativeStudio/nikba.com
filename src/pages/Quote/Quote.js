@@ -70,11 +70,11 @@ export const Quote = () => {
                 },
                 body: JSON.stringify(mail_body),
             })
-            
+
             setShow(true);
             reset()
             setDisabled(false)
-            
+
         }
         catch (err) {
             console.log(err);

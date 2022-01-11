@@ -7,6 +7,7 @@ import { ReactComponent as FacebookIcon } from './facebook.svg';
 import { ReactComponent as InstagramIcon } from './instagram.svg';
 import { ReactComponent as LinkedinIcon } from './linkedin.svg';
 import { ReactComponent as BehanceIcon } from './behance.svg';
+import { ReactComponent as Telegram } from './telegram.svg';
 
 import { Close } from "../../components/Close/Close";
 import { Link } from "react-router-dom";
@@ -19,6 +20,7 @@ export const Contact = () => (
             <div className="contacts">
                 <div><PhoneIcon /> +373 69 820 825</div>
                 <div><PhoneIcon /> +373 79 820 825</div>
+                <div><PhoneIcon /> +1 321 300 9206</div>
                 <div><MailIcon /> office@nikba.com</div>
             </div>
 
@@ -48,6 +50,12 @@ export const Contact = () => (
                         <a href="//www.behance.net/nikba" target="_blank" rel="noreferrer">
                             <BehanceIcon />
                             <span>Google</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://t.me/nikba_com" target="_blank" rel="noreferrer">
+                            <Telegram />
+                            <span>Telegram</span>
                         </a>
                     </div>
                 </div>

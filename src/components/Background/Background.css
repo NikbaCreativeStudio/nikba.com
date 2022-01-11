@@ -8,19 +8,6 @@
 	z-index: 1;
 }
 
-#spiders {
-	z-index: 2;
-	position: fixed;
-	left: 0px;
-	top: 0px;
-}
-
-@media (max-width:767px) {
-	#spiders {
-		display: none;
-	}
-}
-
 .background:before,
 .background:after {
 	content: '';

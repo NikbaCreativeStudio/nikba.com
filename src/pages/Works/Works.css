@@ -52,13 +52,13 @@
     transition: all ease .5s;
     -webkit-transition: all ease .5s;
     -moz-transition: all ease .5s
-  }
+}
 
 .work_hover:hover {
     opacity: 1;
 }
 
-.work_hover-content{
+.work_hover-content {
     position: absolute;
     width: 100%;
     height: 20px;
@@ -66,7 +66,7 @@
     text-align: center;
     top: 50%;
     color: #fff;
-  }
+}
 
 .work_inner img {
     width: 100%;
@@ -134,7 +134,7 @@
     .work_links {
         flex-direction: column;
         margin-top: 1rem;
-        
+
     }
 
     .work_links a {

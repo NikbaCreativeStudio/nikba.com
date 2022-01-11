@@ -3,8 +3,8 @@
 <svg version="1.1" id="phone" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:8;}
+	.phone{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:8;}
 </style>
-<path class="st0" d="M14,4h20c2.2,0,4,1.8,4,4v32c0,2.2-1.8,4-4,4H14c-2.2,0-4-1.8-4-4V8C10,5.8,11.8,4,14,4z"/>
-<line class="st0" x1="24" y1="36" x2="24" y2="36"/>
+<path class="phone" d="M14,4h20c2.2,0,4,1.8,4,4v32c0,2.2-1.8,4-4,4H14c-2.2,0-4-1.8-4-4V8C10,5.8,11.8,4,14,4z"/>
+<line class="phone" x1="24" y1="36" x2="24" y2="36"/>
 </svg>

@@ -24,7 +24,6 @@ html {
 	}
 }
 
-
 body {
 	color: #ffffff;
 	font-family: "Source Sans Pro", sans-serif;
@@ -189,7 +188,7 @@ img {
  * animation clients-fade
  * ----------------------------------------
  */
- @keyframes clients-fade {
+@keyframes clients-fade {
 	0% {
 		opacity: 0;
 	}
