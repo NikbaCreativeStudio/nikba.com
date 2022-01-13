@@ -97,3 +97,20 @@
         justify-content: space-between;
     }
 }
+
+@media screen and (max-width:360px) {
+    .contact_footer {
+        flex-direction: column;
+    }
+
+    .social {
+        margin-top: 1.5rem;
+        align-content: space-between;
+    }
+
+    .contact_footer .quote {
+        margin-top: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+}
