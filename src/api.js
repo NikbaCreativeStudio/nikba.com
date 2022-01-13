@@ -1,8 +1,11 @@
 import useSWR, { useSWRConfig }  from 'swr'
 
-export const useStaleSWR = (dataKey) => {
+export function useStaleSWR(dataKey) {
     const apiUrl = process.env.REACT_APP_API_URL
-    const fetcher = (url) => fetch(apiUrl+url).then((res) => res.json());
+
+    async function fetcher(url) {
+        return await fetch(apiUrl + url).then(res => res.json()).catch(error => console.log(error))
+    }
 
     const { cache } = useSWRConfig()
 
@@ -13,7 +16,7 @@ export const useStaleSWR = (dataKey) => {
         refreshWhenOffline: false,
         refreshWhenHidden: false,
         refreshInterval: 0
-    };
+    }
 
-    return useSWR(dataKey, fetcher, revalidationOptions);
+    return useSWR(dataKey, fetcher, revalidationOptions)
 }
