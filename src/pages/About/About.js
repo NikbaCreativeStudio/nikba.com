@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 
 import { Close } from "../../components/Close/Close";
 import { Clients } from "../../components/Clients/Clients";
+import { Testimonials } from "../../components/Testimonials/Testimonials";
 import { Page } from "../../components/Page/Page";
 
 export const About = () => {
@@ -11,6 +12,7 @@ export const About = () => {
                 <article>
                     <Close Path="/" />
                     <Page id="1" />
+                    <Testimonials />
                     <Clients />
                 </article>
             </div>
