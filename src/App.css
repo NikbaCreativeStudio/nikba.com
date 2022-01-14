@@ -2,6 +2,9 @@
 /* Path: src/App.css */
 
 /* Base styles */
+* {
+	user-select: none;
+}
 html {
 	font-size: 16pt;
 }

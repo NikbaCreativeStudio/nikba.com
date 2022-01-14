@@ -12,8 +12,10 @@ export const About = () => {
                 <article>
                     <Close Path="/" />
                     <Page id="1" />
-                    <Testimonials />
+                    
                     <Clients />
+
+                    <Testimonials />
                 </article>
             </div>
         </Fragment>
