@@ -3,8 +3,8 @@ import LazyLoad from "react-lazyload"
 import { Link } from 'react-router-dom';
 
 export const Item = (work) => {
-
-    const { title, url, cover } = work.work
+    
+    const { title, url, cover } = work.work;
 
     return (
         <LazyLoad offset={100} height={300} once className="work">
@@ -16,7 +16,9 @@ export const Item = (work) => {
                                 View Project
                             </div>
                         </div>
-                        <img src={cover.data.thumbnails[7].url} alt={title} />
+                        <LazyLoad offset={100} height={300} once>
+                            <img src={cover.data.thumbnails[7].url} alt={title} />
+                        </LazyLoad>
                     </div>
                     <h3>{title}</h3>
                 </div>

@@ -70,9 +70,10 @@
 
 .work_inner img {
     width: 100%;
-    min-height: 31px;
+    min-height: 202px;
     transition: all 0.3s;
     overflow: hidden;
+    font-size: 0;
 }
 
 .work:hover img {
