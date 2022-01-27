@@ -1,13 +1,10 @@
 import React, { Fragment, useState } from "react";
 import './Works.css';
-import LazyLoad from "react-lazyload"
 
 import { useStaleSWR } from '../../api'
-
-import { Link } from 'react-router-dom';
-import { Close } from "../../components/Close/Close";
 import { Loading } from "../../components/Loader/Loader";
-
+import { Close } from "../../components/Close/Close";
+import { Item } from "./Item/Item";
 
 export const Works = () => {
 
@@ -33,23 +30,8 @@ export const Works = () => {
                     <h2 className="page_title">Our Best Work</h2>
                     <div className="works">
                         {data.data.slice(0, cnt).map((work, index) => (
-                            <LazyLoad offset={100} height={300} once key={index} className="work">
-                                <Link to={`/works/${work.url}`}>
-                                    <div className="work_inner">
-                                        <div className="work_image">
-                                            <div className="work_hover">
-                                                <div className="work_hover-content">
-                                                    View Project
-                                                </div>
-                                            </div>
-                                            <img src={work.cover.data.thumbnails[7].url} alt={work.title} />
-                                        </div>
-                                        <h3>{work.title}</h3>
-                                    </div>
-                                </Link>
-                            </LazyLoad>
+                            <Item key={index} work={work} />
                         ))}
-
                     </div>
                     {cnt < last && (
                         <button className="load_more" onClick={() => setCnt(cnt + 3)}>Load More</button>
