@@ -46,7 +46,7 @@ export const Works = () => {
                 <article>
                     <Close Path="/" />
 
-                    <h2 className="page_title">Our Best Work</h2>
+                    <h2 className="page_title">Our Best Works</h2>
                     <div className="works">
                         {works && works.map( ( work, index ) => <Item key={index} work={work} /> )}
                     </div>
