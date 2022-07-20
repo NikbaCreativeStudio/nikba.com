@@ -40,7 +40,6 @@ export const Quote = () => {
         const body = {
             name: data.name,
             email: data.email,
-            subject: data.subject,
             message: data.message,
             date: cur_date
         }
@@ -48,7 +47,7 @@ export const Quote = () => {
         const mail_body = {
             "to": "office@nikba.com",
             "subject": "New Message from Nikba Website",
-            "body": "Name: " + data.name + "<br />Email: " + data.email + "<br />Subject: " + data.subject + "<br />Message: " + data.message,
+            "body": "Name: " + data.name + "<br />Email: " + data.email + "<br />Message: " + data.message,
             "type": "html"
         }
 
@@ -138,31 +137,7 @@ export const Quote = () => {
                         </div>
 
                         <div className="form_group">
-                            <label htmlFor="form_subject">Your Phone Number</label>
-                            <input
-                                type="text"
-                                name="subject"
-                                placeholder="Subject"
-                                {...register('subject', {
-                                    required: {
-                                        value: true,
-                                        message: 'Please enter a subject'
-                                    },
-                                    maxLength: {
-                                        value: 75,
-                                        message: 'Subject cannot exceed 75 characters'
-                                    }
-                                })}
-                            />
-                            {errors.subject &&
-                                <div className="invalid-feedback">
-                                    {errors.subject.message}
-                                </div>
-                            }
-                        </div>
-
-                        <div className="form_group">
-                            <label htmlFor="form_message">Your Message *</label>
+                            <label htmlFor="form_message">Message *</label>
                             <textarea
                                 name="message"
                                 placeholder="Message"
